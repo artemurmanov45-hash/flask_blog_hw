@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %}Дневник программиста{% endblock %}
+
+{% block header %}📝 Дневник программиста{% endblock %}
+
+{% block content %}
+    <section class="diary-form">
+        <h2>Добавить новую запись</h2>
+        <form method="POST" action="{{ url_for('notes') }}">
+            <div>
+                <label for="title">Заголовок:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="content">Текст записи:</label>
+                <textarea id="content" name="content" rows="5" required></textarea>
+            </div>
+            <button type="submit">Добавить запись</button>
+        </form>
+    </section>
+
+    <section class="diary-entries">
+        <h2>Мои записи</h2>
+        {% if entries %}
+            <ul>
+                {% for title, content in entries.items() %}
+                    <li>
+                        <h3>{{ title }}</h3>
+                        <p>{{ content }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Записей пока нет. Добавьте первую!</p>
+        {% endif %}
+    </section>
+{% endblock %}
