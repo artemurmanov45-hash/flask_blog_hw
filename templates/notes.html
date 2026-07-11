@@ -13,6 +13,10 @@
                 <input type="text" id="title" name="title" required>
             </div>
             <div>
+                <label for="subtitle">Подзаголовок (необязательно):</label>
+                <input type="text" id="subtitle" name="subtitle">
+            </div>
+            <div>
                 <label for="content">Текст записи:</label>
                 <textarea id="content" name="content" rows="5" required></textarea>
             </div>
@@ -24,10 +28,13 @@
         <h2>Мои записи</h2>
         {% if entries %}
             <ul>
-                {% for title, content in entries.items() %}
+                {% for note in entries %}
                     <li>
-                        <h3>{{ title }}</h3>
-                        <p>{{ content }}</p>
+                        <h3>{{ note.title }}</h3>
+                        {% if note.subtitle %}
+                            <h4 style="color: #555; font-weight: normal;">{{ note.subtitle }}</h4>
+                        {% endif %}
+                        <p>{{ note.text }}</p>
                     </li>
                 {% endfor %}
             </ul>
