@@ -1,4 +1,4 @@
-/* Общие стили */
+/* ===== ОБЩИЕ СТИЛИ ===== */
 * {
     margin: 0;
     padding: 0;
@@ -7,22 +7,28 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f4f8;   /* Поменяли фон */
+    background-color: #f0f4f8;
     color: #333;
     line-height: 1.6;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
+/* ===== КОНТЕЙНЕР (ЦЕНТРИРОВАНИЕ) ===== */
 .container {
     max-width: 1100px;
-    margin: 0 auto;
-    background: #ffffff;
+    width: 100%;
+    margin: 0 auto;              /* ← центрирование */
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Шрифты и размеры */
+/* ===== ЗАГОЛОВКИ И ТЕКСТ ===== */
 h1 {
     font-family: 'Georgia', serif;
     font-size: 2.8rem;
@@ -56,7 +62,7 @@ li {
     margin-bottom: 5px;
 }
 
-/* Изображение */
+/* ===== ИЗОБРАЖЕНИЕ ===== */
 .avatar {
     width: 150px;
     height: 150px;
@@ -67,7 +73,22 @@ li {
     object-fit: cover;
 }
 
-/* Таблица */
+/* ===== НАВИГАЦИЯ ===== */
+nav {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+nav a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 10px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ТАБЛИЦА ===== */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -97,44 +118,77 @@ table tr:hover {
     background-color: #eef5f9;
 }
 
-/* Выделение заполненных ячеек (первые две темы) */
-table tbody tr:first-child td:first-child,
-table tbody tr:first-child td:nth-child(2),
-table tbody tr:first-child td:nth-child(3),
-table tbody tr:first-child td:nth-child(4) {
-    background-color: #d4edda;
-}
-
-table tbody tr:first-child td:nth-child(5),
-table tbody tr:first-child td:nth-child(6),
-table tbody tr:first-child td:nth-child(7),
-table tbody tr:first-child td:nth-child(8) {
-    background-color: #fff3cd;
-}
-
-/* Центрирование компонентов */
-header, footer {
-    text-align: center;
-}
-
-section {
+/* ===== ФОРМА ДНЕВНИКА ===== */
+.diary-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
     margin: 30px 0;
 }
+.diary-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.diary-form input[type="text"],
+.diary-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.diary-form button {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.diary-form button:hover {
+    background-color: #1a2a3a;
+}
 
+/* ===== СПИСОК ЗАПИСЕЙ ===== */
+.diary-entries ul {
+    list-style: none;
+    padding: 0;
+}
+.diary-entries li {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #3498db;
+}
+.diary-entries h3 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+}
+.diary-entries p {
+    margin: 0;
+    color: #555;
+}
+
+/* ===== ФУТЕР ===== */
 footer {
     margin-top: 40px;
     border-top: 1px solid #ddd;
     padding-top: 20px;
     font-size: 0.9rem;
     color: #777;
+    text-align: center;
 }
 
-a {
+footer a {
     color: #3498db;
     text-decoration: none;
 }
-
-a:hover {
+footer a:hover {
     text-decoration: underline;
 }
 
@@ -144,14 +198,22 @@ hr {
     margin: 20px 0;
 }
 
-/* Адаптивность таблицы */
+/* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    h1 {
+        font-size: 2.0rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
     table {
         font-size: 0.75rem;
     }
     table th, table td {
         padding: 5px 4px;
     }
-    h1 { font-size: 2.0rem; }
-    h2 { font-size: 1.5rem; }
 }
