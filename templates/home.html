@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block header %}Добро пожаловать!{% endblock %}
+
+{% block content %}
+    <h2>Выберите действие</h2>
+    {% if logged_in %}
+        <p>Вы вошли как {{ username }}.</p>
+        <a href="{{ url_for('notes') }}">Перейти к дневнику</a> |
+        <a href="{{ url_for('logout') }}">Выйти</a>
+    {% else %}
+        <p>
+            <a href="{{ url_for('register') }}"><button>Регистрация</button></a>
+            <a href="{{ url_for('login') }}"><button>Вход</button></a>
+        </p>
+    {% endif %}
+{% endblock %}

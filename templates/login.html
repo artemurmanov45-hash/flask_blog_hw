@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block header %}Вход в систему{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{{ url_for('login') }}">
+        <div>
+            <label>Имя пользователя:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div>
+            <label>Пароль:</label>
+            <input type="password" name="password" required>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйтесь</a></p>
+{% endblock %}
