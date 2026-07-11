@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой блог - достижения и навыки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Мой личный блог</h1>
+            <p>Добро пожаловать на страницу моих достижений и навыков!</p>
+            <hr>
+        </header>
+
+        <section class="about">
+            <h2>О себе</h2>
+            <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="Моё фото" class="avatar">
+            <p>Меня зовут Урманов А.С. Я изучаю программирование и алгоритмы. В этом блоге я делюсь своими успехами и планами.</p>
+            <p>Мои ключевые навыки:</p>
+            <ul>
+                <li><strong>Python</strong> – продвинутый уровень</li>
+                <li><strong>Flask</strong> – базовый уровень</li>
+                <li><strong>Git</strong> – уверенный пользователь</li>
+                <li><strong>HTML & CSS</strong> – средний уровень</li>
+            </ul>
+        </section>
+
+        <section class="achievements">
+            <h2>Достижения за курс "Алгоритмы и структуры данных"</h2>
+            <p>Ниже представлена таблица с моими результатами по темам дисциплины.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Тема</th>
+                        <th>Процент выполнения темы</th>
+                        <th>Процент выполнения ДЗ</th>
+                        <th>Комментарии</th>
+                        <th>Тема</th>
+                        <th>Процент выполнения темы</th>
+                        <th>Процент выполнения ДЗ</th>
+                        <th>Комментарии</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Рекурсия и стек</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td>Усвоено полностью</td>
+                        <td>Стек вызовов. Быстрая сортировка</td>
+                        <td>90%</td>
+                        <td>100%</td>
+                        <td>Есть вопросы по быстрой сортировке</td>
+                    </tr>
+                    <tr>
+                        <td>Очереди и сортировка слиянием</td>
+                        <td>85%</td>
+                        <td>100%</td>
+                        <td>Нужно повторить слияние</td>
+                        <td>Хеш-таблицы</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>Ещё не изучал</td>
+                    </tr>
+                    <tr>
+                        <td>Деревья</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>Не начато</td>
+                        <td>Графы</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>Не начато</td>
+                    </tr>
+                    <tr>
+                        <td>Динамическое программирование</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>Не начато</td>
+                        <td>Итоговый проект</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>В процессе</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Примечание:</strong> данные заполнены до второй темы включительно (выделены цветом).</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Урманов А.С. Все права защищены.</p>
+            <p><a href="#">Наверх</a></p>
+        </footer>
+    </div>
+</body>
+</html>
