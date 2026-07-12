@@ -60,12 +60,13 @@
 - **База данных SQLite** для хранения записей дневника
 - **Авторизация пользователей** (регистрация, вход, выход)
 - **Генерация и проверка токенов** для защиты страниц
+- **REST API** для управления списком товаров (GET, POST, PUT, DELETE)
 
-Проект выполнен в рамках домашних заданий №12–15 по дисциплине **«Алгоритмы и структуры данных»**.
+Проект выполнен в рамках домашних заданий №12–16 по дисциплине **«Алгоритмы и структуры данных»**.
 
 ---
 
-## ✨ Что было улучшено (ДЗ Тема №4)
+## ✨ Что было улучшено (ДЗ Тема №4 – база данных)
 
 | Что добавлено | Описание |
 |---------------|----------|
@@ -94,6 +95,21 @@
 
 ---
 
+## ✨ Что было добавлено (ДЗ №6 – REST API)
+
+| Что добавлено | Описание |
+|---------------|----------|
+| **Отдельное Flask-приложение** | `api_app.py` – работает на порту 5001 |
+| **Хранилище данных** | Список словарей (имитация базы данных) |
+| **Маршрут `GET /items`** | Возвращает все элементы |
+| **Маршрут `GET /items/<id>`** | Возвращает элемент по id (путевой параметр) |
+| **Маршрут `POST /items`** | Добавляет новый элемент (JSON) |
+| **Маршрут `PUT /items/<id>`** | Обновляет элемент по id (путевой параметр) |
+| **Маршрут `DELETE /items/<id>`** | Удаляет элемент по id (путевой параметр) |
+| **Скриншоты всех запросов** | Добавлены в папку `api_screenshots/` |
+
+---
+
 ## 🛠️ Стек технологий
 
 - **Python 3.6+** – язык программирования
@@ -110,28 +126,35 @@
 ## 📁 Структура проекта
 flask_blog_hw/
 │
-├── app.py # Flask-приложение (модели, маршруты, авторизация)
-├── requirements.txt # Зависимости (Flask, SQLAlchemy, Migrate, bcrypt, pyjwt)
+├── app.py # Основное приложение (блог, авторизация)
+├── api_app.py # REST API приложение (ДЗ №16)
+├── requirements.txt # Зависимости
 ├── templates/
-│ ├── index.html # Базовый шаблон
-│ ├── home.html # Главная страница с кнопками (НОВОЕ)
-│ ├── register.html # Форма регистрации (НОВОЕ)
-│ ├── login.html # Форма входа (НОВОЕ)
-│ └── notes.html # Дневник программиста
+│ ├── index.html
+│ ├── home.html
+│ ├── register.html
+│ ├── login.html
+│ └── notes.html
 ├── static/
-│ ├── style.css # Стилизация
+│ ├── style.css
 │ └── images/
-│ └── avatar.png # Аватар
-├── migrations/ # Миграции (история изменений БД)
+│ └── avatar.png
+├── migrations/ # Миграции БД
 ├── instance/ # Папка с БД (игнорируется)
-├── screenshot_v2.png # Скриншот главной страницы (старый)
-├── screenshot_notes_v2.png # Скриншот дневника (старый)
-├── screenshot_home.png # Скриншот страницы /home (НОВЫЙ)
-├── screenshot_register.png # Скриншот регистрации (НОВЫЙ)
-├── screenshot_login.png # Скриншот входа (НОВЫЙ)
-├── screenshot_notes.png # Скриншот дневника (после авторизации) (НОВЫЙ)
-├── README.md # Этот файл
-└── .gitignore # Игнорирование временных файлов и БД
+├── api_screenshots/ # Скриншоты REST API (НОВОЕ)
+│ ├── screenshot_get_all.png
+│ ├── screenshot_get_one.png
+│ ├── screenshot_post.png
+│ ├── screenshot_put.png
+│ └── screenshot_delete.png
+├── screenshot_v2.png
+├── screenshot_notes_v2.png
+├── screenshot_home.png
+├── screenshot_register.png
+├── screenshot_login.png
+├── screenshot_notes.png
+├── README.md
+└── .gitignore
 
 text
 
@@ -139,22 +162,18 @@ text
 
 ## 🚀 Как запустить проект
 
-### 1. Клонируйте репозиторий
+### Основное приложение (блог)
 ```bash
-git clone https://github.com/artemurmanov45-hash/flask_blog_hw.git
-cd flask_blog_hw
-2. Установите зависимости
-bash
 pip install -r requirements.txt
-3. Примените миграции (создайте БД)
-bash
 python -m flask db upgrade
-4. Запустите приложение
-bash
 python app.py
-5. Откройте в браузере
-Перейдите по адресу:
-👉 http://127.0.0.1:5000
+Открыть: http://127.0.0.1:5000
+
+REST API (ДЗ №16)
+bash
+python api_app.py
+Сервер запустится на порту 5001.
+Эндпоинты: http://127.0.0.1:5001/items
 
 🎨 Что реализовано
 Главная страница
@@ -192,20 +211,16 @@ python app.py
 
 Выход – очистка сессии
 
-CSS-стилизация (полная)
-Фон – светло-голубой
+REST API
+Получение всех элементов (GET /items)
 
-Шрифты – заголовки (Georgia), основной текст (Segoe UI)
+Получение одного элемента (GET /items/<id>)
 
-Размеры – заголовки крупные, текст увеличен
+Добавление элемента (POST /items с JSON)
 
-Изображение – размер 150×150, обрезка по кругу
+Обновление элемента (PUT /items/<id> с JSON)
 
-Расположение – все элементы центрированы, отступы
-
-Форма – стилизована, кнопка с эффектом при наведении
-
-Записи – оформлены в виде карточек с левой рамкой
+Удаление элемента (DELETE /items/<id>)
 
 📊 Критерии оценки ДЗ №12–13
 Критерий	Баллы	Статус
@@ -231,23 +246,43 @@ CSS-стилизация (полная)
 К5 – Генерация токена	1	✅
 К6 – Проверка токена	1	✅
 Итого	7/7	✅
-📸 Скриншоты (уменьшенные)
-Главная страница (с таблицей и новой темой)
-<p align="center"> <img src="screenshot_v2.png" alt="Главная страница" width="600"> </p>
-Дневник программиста (с формой и записями)
-<p align="center"> <img src="screenshot_notes_v2.png" alt="Дневник программиста" width="600"> </p>
-Страница /home (главная с кнопками)
-<p align="center"> <img src="screenshot_home.png" alt="Страница home" width="600"> </p>
-Страница регистрации /register
-<p align="center"> <img src="screenshot_register.png" alt="Регистрация" width="600"> </p>
-Страница входа /login
-<p align="center"> <img src="screenshot_login.png" alt="Вход" width="600"> </p>
-Дневник после авторизации
-<p align="center"> <img src="screenshot_notes.png" alt="Дневник" width="600"> </p>
+📊 Критерии оценки ДЗ №16 (REST API)
+Критерий	Баллы	Статус
+К1 – Корректно созданы маршруты	1	✅
+К2 – Минимум 2 маршрута имеют путевой параметр	1	✅
+К3 – GET работает	1	✅
+К4 – POST работает	1	✅
+К5 – PUT работает	1	✅
+К6 – DELETE работает	1	✅
+Итого	6/6	✅
+📸 Скриншоты (REST API)
+Все скриншоты REST API находятся в папке api_screenshots/.
+
+Запрос	Скриншот
+GET /items	https://api_screenshots/screenshot_get_all.png
+GET /items/1	https://api_screenshots/screenshot_get_one.png
+POST /items	https://api_screenshots/screenshot_post.png
+PUT /items/1	https://api_screenshots/screenshot_put.png
+DELETE /items/2	https://api_screenshots/screenshot_delete.png
+📌 Примеры запросов (curl)
+bash
+# GET all
+curl http://127.0.0.1:5001/items
+
+# GET one
+curl http://127.0.0.1:5001/items/1
+
+# POST (создать файл data.json с {"name":"Планшет","price":20000})
+curl -X POST -H "Content-Type: application/json" -d @data.json http://127.0.0.1:5001/items
+
+# PUT (создать файл update.json с {"price":60000})
+curl -X PUT -H "Content-Type: application/json" -d @update.json http://127.0.0.1:5001/items/1
+
+# DELETE
+curl -X DELETE http://127.0.0.1:5001/items/2
 👨‍💻 Автор
 Урманов А. С.
 GitHub: artemurmanov45-hash
-Группа: [номер группы]
 Дата: Июль 2026
 
 📄 Лицензия
@@ -259,10 +294,10 @@ text
 
 ## ✅ ЧТО ДАЛЬШЕ
 
-1. **Сохрани этот код в файл `README.md`**.
-2. **Добавь его в Git и отправь на GitHub:**
+1. **Сохрани этот код в файл `README.md`** (полностью заменив старый).
+2. **Добавь изменения в Git:**
 
 ```bash
 git add README.md
-git commit -m "Обновлён README: добавлены скриншоты и описание авторизации (ДЗ №15)"
+git commit -m "Обновлён README: добавлено описание REST API (ДЗ №16) и скриншоты"
 git push
