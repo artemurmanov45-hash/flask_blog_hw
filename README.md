@@ -141,7 +141,7 @@ flask_blog_hw/
 │ └── avatar.png
 ├── migrations/ # Миграции БД
 ├── instance/ # Папка с БД (игнорируется)
-├── api_screenshots/ # Скриншоты REST API (НОВОЕ)
+├── api_screenshots/ # Скриншоты REST API
 │ ├── screenshot_get_all.png
 │ ├── screenshot_get_one.png
 │ ├── screenshot_post.png
@@ -155,7 +155,6 @@ flask_blog_hw/
 ├── screenshot_notes.png
 ├── README.md
 └── .gitignore
-
 text
 
 ---
